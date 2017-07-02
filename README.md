@@ -1,1 +1,4 @@
-dotfiles
+# Installation
+
+```ln -s ~/repos/dotfiles/.vim ~/.vim```
+```ln -s ~/repos/dotfiles/.vimrc ~/.vimrc```
