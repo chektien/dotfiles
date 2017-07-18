@@ -43,6 +43,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_include_dirs = ['/usr/local/Cellar/sfml/2.4.2/include']
 let g:syntastic_cpp_compiler_options = '-std=c++14'
 
+" youcompleteme
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
 " theme
 "let g:solarized_termcolors=256
 set t_Co=256
