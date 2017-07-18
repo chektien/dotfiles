@@ -47,6 +47,8 @@ let g:syntastic_cpp_compiler_options = '-std=c++14'
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 " theme
+au FileChangedShell * echo "Warning: file changed on disk"
+
 "let g:solarized_termcolors=256
 set t_Co=256
 syntax enable
