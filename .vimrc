@@ -8,6 +8,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'thaerkh/vim-workspace'
 "Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
@@ -16,6 +17,7 @@ let mapleader = ","
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nb :NERDTreeFromBookmark<cr>
+nnoremap <leader>s :ToggleWorkspace<CR>
 inoremap jj <esc>
 set whichwrap+=<,>,h,l,[,]
 
@@ -27,7 +29,7 @@ set expandtab
 " status line
 set statusline=%f         " Path to the file
 set statusline+=%=        " Switch to the right side
-set statusline+=col:%c    " Current character 
+set statusline+=col:%c    " Current character
 set statusline+=\ line:%l " Current line
 set statusline+=/         " Separator
 set statusline+=%L        " Total lines
@@ -46,7 +48,7 @@ let g:syntastic_cpp_compiler_options = '-std=c++14'
 " youcompleteme
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
-" theme
+" detect file changes on disk
 au FileChangedShell * echo "Warning: file changed on disk"
 
 "let g:solarized_termcolors=256
