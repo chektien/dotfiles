@@ -9,11 +9,13 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'thaerkh/vim-workspace'
+Plug 'majutsushi/tagbar'
 "Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " key mappings
 let mapleader = ","
+map <leader>tt :TagbarToggle<cr>
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nb :NERDTreeFromBookmark<cr>
@@ -35,21 +37,29 @@ set statusline+=/         " Separator
 set statusline+=%L        " Total lines
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{syntasticstatuslineflag()}
+"set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_include_dirs = ['/usr/local/Cellar/sfml/2.4.2/include']
+let g:syntastic_cpp_include_dirs = ['/usr/local/cellar/sfml/2.4.2/include']
 let g:syntastic_cpp_compiler_options = '-std=c++14'
+
+" workspace
+let g:workspace_autosave_always = 1
+let g:workspace_session_name = 'session.vim'
+let g:workspace_autosave_untrailspaces = 0
 
 " youcompleteme
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_confirm_extra_conf = 0
 
 " detect file changes on disk
-au FileChangedShell * echo "Warning: file changed on disk"
+"au FileChangedShell * echo "Warning: file changed on disk"
 
 "let g:solarized_termcolors=256
 set t_Co=256
