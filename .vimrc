@@ -10,6 +10,7 @@ Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'thaerkh/vim-workspace'
 Plug 'majutsushi/tagbar'
+Plug 'plasticboy/vim-markdown'
 "Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
