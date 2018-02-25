@@ -20,6 +20,7 @@ map <leader>tt :TagbarToggle<cr>
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nb :NERDTreeFromBookmark<cr>
+map <leader>p "_dP
 nnoremap <leader>s :ToggleWorkspace<CR>
 inoremap jj <esc>
 set whichwrap+=<,>,h,l,[,]
@@ -58,6 +59,9 @@ let g:workspace_autosave_untrailspaces = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_confirm_extra_conf = 0
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
 
 " detect file changes on disk
 "au FileChangedShell * echo "Warning: file changed on disk"
