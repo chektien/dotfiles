@@ -11,6 +11,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'thaerkh/vim-workspace'
 Plug 'majutsushi/tagbar'
 Plug 'plasticboy/vim-markdown'
+Plug 'pangloss/vim-javascript'
 "Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
@@ -21,6 +22,7 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nb :NERDTreeFromBookmark<cr>
 map <leader>p "_dP
+map <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>s :ToggleWorkspace<CR>
 inoremap jj <esc>
 set whichwrap+=<,>,h,l,[,]
@@ -49,6 +51,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_include_dirs = ['/usr/local/cellar/sfml/2.4.2/include']
 let g:syntastic_cpp_compiler_options = '-std=c++14'
 
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+
 " workspace
 let g:workspace_autosave_always = 1
 let g:workspace_session_name = 'session.vim'
@@ -62,6 +67,18 @@ let g:ycm_confirm_extra_conf = 0
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+
+" nerdtree
+autocmd BufEnter * lcd %:p:h " open dir of current file in window when toggling nerdtree
+
+" Set up the arrays to ignore for later
+if !exists('g:syntastic_html_tidy_ignore_errors')
+    let g:syntastic_html_tidy_ignore_errors = []
+endif
+" Ignore a-frame tags in HTML syntax checking
+" See http://stackoverflow.com/questions/30366621
+" ignore errors about Ionic tags
+let g:syntastic_html_tidy_ignore_errors += ["<a-", "discarding unexpected </a-"]
 
 " detect file changes on disk
 "au FileChangedShell * echo "Warning: file changed on disk"
