@@ -7,12 +7,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'thaerkh/vim-workspace'
 Plug 'majutsushi/tagbar'
 Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
-"Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " key mappings
@@ -88,3 +88,4 @@ set t_Co=256
 syntax enable
 set background=dark
 colorscheme peaksea
+

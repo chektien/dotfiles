@@ -2,6 +2,9 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# terminal customization
+export PS1="\w🚴"
+
 # vim by brew
 alias vim=/usr/local/Cellar/vim/8.0.1100_2/bin/vim
 alias vi=vim
