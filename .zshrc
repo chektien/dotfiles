@@ -10,6 +10,8 @@ fi
 
 # shortcuts
 alias create-repo=~/dotfiles/create-repo.sh
+alias temp=/opt/vc/bin/vcgencmd measure_temp
+alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
 
 # texlive
 export PATH=/usr/local/texlive/2020/bin/armhf-linux:$PATH
