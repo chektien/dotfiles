@@ -1,10 +1,16 @@
 # Installation
 
+# TODO full config for new pi
+
+## git pull from all repos
+
+## linking up the dotfiles
+
 ### console
 - `ln -s ~/repos/dotfiles/.vim ~/.vim`
 - `ln -s ~/repos/dotfiles/.vimrc ~/.vimrc`
 
-### vim
+### in vim
 - `PlugClean`
 - `PlugInstall`
 
