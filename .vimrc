@@ -4,9 +4,9 @@ filetype plugin on
 set nocompatible
 set encoding=utf-8
 set t_Co=256
+"set background=dark
 "set background=light
-set background=dark
-colorscheme peaksea
+"colorscheme ayu
 
 " lexical dict settings
 set spell spelllang=en
