@@ -7,8 +7,8 @@
 ## linking up the dotfiles
 
 ### console
-- `ln -s ~/repos/dotfiles/.vim ~/.vim`
-- `ln -s ~/repos/dotfiles/.vimrc ~/.vimrc`
+- `ln -s ~/dotfiles/.vimrc ~/.vimrc`
+- `ln -s ~/dotfiles/.zshrc ~/.zshrc`
 
 ### in vim
 - `PlugClean`

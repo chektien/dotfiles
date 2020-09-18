@@ -4,6 +4,7 @@ filetype plugin on
 set nocompatible
 set encoding=utf-8
 set t_Co=256
+"set background=light
 set background=dark
 colorscheme peaksea
 
@@ -30,6 +31,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'sirver/ultisnips'
     Plug 'nvie/vim-flake8'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+    Plug 'Powerline/Powerline'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
 	"Plug 'ctrlpvim/ctrlp.vim'
