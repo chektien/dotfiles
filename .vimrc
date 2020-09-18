@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'sirver/ultisnips'
     Plug 'nvie/vim-flake8'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-    Plug 'Powerline/Powerline'
+    Plug 'powerline/powerline'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
 	"Plug 'ctrlpvim/ctrlp.vim'
