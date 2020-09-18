@@ -1,0 +1,52 @@
+# lang
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# terminal customization
+export PS1="\w🚴💨 "
+
+# anaconda3
+# export PATH="/Users/ch3k/anaconda3/bin:$PATH"  # commented out by conda initialize
+
+# android
+export ANDROID_SDK_ROOT="/Users/ch3k/Library/Android/sdk"
+export PATH="$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH"
+
+# gradle
+export PATH="/Applications/Android Studio.app/Contents/gradle/gradle-2.14.1/bin:$PATH"
+
+# junit
+export JUNIT_ROOT="/Users/ch3k/junit"
+export CLASSPATH="$JUNIT_ROOT/hamcrest-core-1.3.jar:$JUNIT_ROOT/junit-4.10.jar:$JUNIT_ROOT/junit-addons-1.4.jar:$CLASSPATH"
+
+# Add environment variable NDK_ROOT for cocos2d-x
+export NDK_ROOT=/Users/ch3k/Library/Android/sdk/ndk-bundle
+export PATH=$NDK_ROOT:$PATH
+
+# vim by brew
+alias vim=/usr/local/Cellar/vim/8.2.1700/bin/vim
+#alias vim=/usr/local/Cellar/vim/8.0.1100_2/bin/vim
+#alias vi=vim
+#alias mvim=/Applications/MacVim.app/Contents/bin/mvim 
+
+# graphiz
+#export GRAPHVIZ_DOT=/usr/local/bin/dot
+
+# pandoc
+#export PATH=/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/ch3k/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/ch3k/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/ch3k/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/ch3k/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
