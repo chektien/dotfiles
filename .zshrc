@@ -10,7 +10,7 @@ fi
 
 # shortcuts
 alias create-repo=~/dotfiles/create-repo.sh
-alias temp=/opt/vc/bin/vcgencmd measure_temp
+alias temp='/opt/vc/bin/vcgencmd measure_temp'
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
 
 # texlive
