@@ -4,9 +4,6 @@ filetype plugin on
 set nocompatible
 set encoding=utf-8
 set t_Co=256
-"set background=dark
-"set background=light
-"colorscheme ayu
 
 " lexical dict settings
 set spell spelllang=en
@@ -17,6 +14,7 @@ set splitbelow
 set termwinsize=10x0
 
 call plug#begin('~/.vim/plugged')
+    Plug 'nlknguyen/papercolor-theme'
 	Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-fugitive'
 	Plug 'scrooloose/nerdcommenter'
@@ -31,12 +29,19 @@ call plug#begin('~/.vim/plugged')
     Plug 'sirver/ultisnips'
     Plug 'nvie/vim-flake8'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-    Plug 'powerline/powerline'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
 	"Plug 'ctrlpvim/ctrlp.vim'
 	"Plug 'pangloss/vim-javascript'
 call plug#end()
+
+" theming
+colorscheme PaperColor
+set background=dark
+"set number
+"set laststatus=2
 
 " vim tabs
 set tabstop=4
@@ -59,6 +64,17 @@ augroup lexical
     autocmd FileType textile call lexical#init()
     autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+"let g:airline_symbols.space = "\ua0"
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_buffers = 0
+"let g:airline_solarized_bg='light'
+let g:airline_theme = 'papercolor'
 
 " vimtex
 let g:tex_flavor = 'latex'
@@ -117,7 +133,3 @@ let g:vim_markdown_folding_disabled = 1
 "     " ignore errors about Ionic tags
 "     let g:syntastic_html_tidy_ignore_errors += ["<a-", "discarding
 "     unexpected </a-"]
-
-" code numbering
-" set number
-
