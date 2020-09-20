@@ -31,9 +31,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'ctrlpvim/ctrlp.vim'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
-	"Plug 'ctrlpvim/ctrlp.vim'
 	"Plug 'pangloss/vim-javascript'
 call plug#end()
 
@@ -85,6 +85,7 @@ let g:vimtex_view_general_viewer = "zathura"
 
 " key mappings
 let mapleader = ","
+map <leader>hd :Toc<CR>
 map <leader>tm :term<CR>
 map <leader>lv :VimtexView<CR>
 map <leader>ll :VimtexCompile<CR>
@@ -96,6 +97,7 @@ map <leader>p "_dP
 map <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>ws :ToggleWorkspace<CR>
 inoremap jj <esc>
+
 set whichwrap+=<,>,h,l,[,]
 
 " nerdtree
