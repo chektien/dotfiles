@@ -1,0 +1,15 @@
+[Unit]
+Description=Jupyter Lab Service
+
+[Service]
+User=pi
+Type=simple
+#Environment=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/home/pi/ml/bin
+ExecStart=/home/pi/ml/bin/jupyter-lab --config=/home/pi/.jupyter/jupyter_notebook_config.py
+#ExecStart=jupyter lab --config=/home/pi/.jupyter/jupyter_notebook_config.py --allow-root
+WorkingDirectory=/home/pi/
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
