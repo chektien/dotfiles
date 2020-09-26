@@ -9,6 +9,8 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # shortcuts
+alias connect-ict-vpn=~/dotfiles/connect-ict-vpn.sh
+alias fix-zsh-history=~/dotfiles/fix-zsh-history.sh
 alias create-repo=~/dotfiles/create-repo.sh
 alias temp='/opt/vc/bin/vcgencmd measure_temp'
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'

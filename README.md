@@ -6,6 +6,12 @@ Create `<root>/wpa-supplicant.conf` in sdcard
 Then create ssh file in `<root>` 
 `touch ssh`
 
+If network-manager is installed, everything will be overridden.
+After disabling network-manager, need to
+1. add `name_servers=8.8.8.8` to `/etc/resolveconf.conf`
+2. 
+
+
 ## config to use raspi usb-c as an ethernet device
 https://www.hardill.me.uk/wordpress/2019/11/02/pi4-usb-c-gadget/
 
