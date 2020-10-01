@@ -15,7 +15,7 @@ alias pip=pip3
 alias connect-ict-vpn=~/dotfiles/connect-ict-vpn.sh
 alias fix-zsh-history=~/dotfiles/fix-zsh-history.sh
 alias create-repo=~/dotfiles/create-repo.sh
-alias temp='/opt/vc/bin/vcgencmd measure_temp'
+alias temp='/usr/bin/vcgencmd measure_temp'
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
 
 # texlive
@@ -28,9 +28,9 @@ export ZSH="/home/pi/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="half-life"
+#ZSH_THEME="half-life"
 #ZSH_THEME="agnoster"
-#ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

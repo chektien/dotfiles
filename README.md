@@ -11,6 +11,8 @@ After disabling network-manager, need to
 1. add `name_servers=8.8.8.8` to `/etc/resolveconf.conf`
 2. 
 
+## VPN into e.g., ICT-WIFI
+sudo openconnect -u LABA100855 --servercert pin-sha256:qYK/8Bv38RokYkfHqvmberk6RYxI2QGbaGxdxWFKHy4= --authgroup=ictvpn 118.189.138.35
 
 ## config to use raspi usb-c as an ethernet device
 https://www.hardill.me.uk/wordpress/2019/11/02/pi4-usb-c-gadget/

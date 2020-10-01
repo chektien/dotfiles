@@ -9,7 +9,7 @@ git clone git@github.com:chektien/dotfiles.git
 
 # install some essentials
 # mosh server for nicer connectivity to ssh 
-sudo apt install mosh tmux autojump cmake zsh 
+sudo apt install mosh tmux autojump cmake zsh openconnect
 
 # link up .zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
