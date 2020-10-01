@@ -11,7 +11,7 @@ hi SpellBad cterm=underline ctermfg=red
 
 " terminal splitting
 set splitbelow
-set termwinsize=10x0
+set termwinsize=15x0
 
 call plug#begin('~/.vim/plugged')
     Plug 'nlknguyen/papercolor-theme'
@@ -26,12 +26,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'majutsushi/tagbar'
 	Plug 'plasticboy/vim-markdown'
     Plug 'reedes/vim-lexical'
-    Plug 'sirver/ultisnips'
     Plug 'nvie/vim-flake8'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+    Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py --all' }
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
+    "Plug 'sirver/ultisnips'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
 	"Plug 'pangloss/vim-javascript'
