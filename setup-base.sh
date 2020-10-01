@@ -44,5 +44,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 # https://ownthe.cloud/posts/configure-aws-cli-on-raspberry-pi/
 pip install awsclipip install awscli
 
+# install tightvncserver
+sudo apt install tightvncserver
+echo "@reboot su - pi -c '/usr/bin/tightvncserver -geometry 1366x1024'" >> addcron
+crontab addcron
+rm addcron
+
 # network-manager-gnome for desktop wifi management
 #sudo apt install network-manager network-manager-gnome
