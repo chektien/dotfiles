@@ -8,9 +8,14 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# shortcuts
+#  shortcuts
+alias vi=vim
+alias python=python3
+alias pip=pip3
+alias connect-ict-vpn=~/dotfiles/connect-ict-vpn.sh
+alias fix-zsh-history=~/dotfiles/fix-zsh-history.sh
 alias create-repo=~/dotfiles/create-repo.sh
-alias temp='/opt/vc/bin/vcgencmd measure_temp'
+alias temp='/usr/bin/vcgencmd measure_temp'
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
 
 # texlive
@@ -31,7 +36,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "half-life" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

@@ -11,9 +11,10 @@ hi SpellBad cterm=underline ctermfg=red
 
 " terminal splitting
 set splitbelow
-set termwinsize=10x0
+set termwinsize=15x0
 
 call plug#begin('~/.vim/plugged')
+    Plug 'altercation/vim-colors-solarized'
     Plug 'nlknguyen/papercolor-theme'
 	Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-fugitive'
@@ -26,14 +27,15 @@ call plug#begin('~/.vim/plugged')
 	Plug 'majutsushi/tagbar'
 	Plug 'plasticboy/vim-markdown'
     Plug 'reedes/vim-lexical'
-    Plug 'sirver/ultisnips'
     Plug 'nvie/vim-flake8'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+    Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py' }
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'ctrlpvim/ctrlp.vim'
+    "Plug 'sirver/ultisnips'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
-	"Plug 'ctrlpvim/ctrlp.vim'
 	"Plug 'pangloss/vim-javascript'
 call plug#end()
 
@@ -85,6 +87,7 @@ let g:vimtex_view_general_viewer = "zathura"
 
 " key mappings
 let mapleader = ","
+map <leader>hd :Toc<CR>
 map <leader>tm :term<CR>
 map <leader>lv :VimtexView<CR>
 map <leader>ll :VimtexCompile<CR>
@@ -96,11 +99,13 @@ map <leader>p "_dP
 map <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>ws :ToggleWorkspace<CR>
 inoremap jj <esc>
+
 set whichwrap+=<,>,h,l,[,]
 
 " nerdtree
 " open dir of current file in window when toggling nerdtree
 augroup nerdTreeCD
+    autocmd!
     autocmd BufEnter * if &buftype !=# 'terminal' | lcd %:p:h | endif 
 augroup END
 
@@ -110,7 +115,10 @@ let g:workspace_session_name = 'session.vim'
 let g:workspace_autosave_untrailspaces = 0
 
 " youcompleteme
-au bufenter *.tex let g:ycm_auto_trigger=0 
+augroup ycm
+    autocmd!
+    autocmd BufEnter *.tex let g:ycm_auto_trigger=0 
+augroup END
 "let g:ycm_semantic_triggers = { 'tex': [] }
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "let g:ycm_autoclose_preview_window_after_insertion = 1

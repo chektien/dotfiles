@@ -1,4 +1,9 @@
-brew cask install iterm2
+#!/bin/bash
+
+# macOS
+#brew cask install iterm2
+
+sudo apt install zsh
 
 pip install --user git+git://github.com/Lokaltog/powerline --verbose
 
@@ -13,4 +18,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # macOS 
-brew install autojump
+# brew install autojump
