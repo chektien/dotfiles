@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# config git
+git config --global user.email "chek@gamesstudio.org"
+git config --global user.name "chektien"
+
 # ssh-keygen and copy pub key to github
 git clone git@github.com:chektien/dotfiles.git
 
