@@ -60,24 +60,7 @@ This requires powerline fonts and symbols.
 
 # LaTeX
 
-Need to find where the following file lies...
-~/.latexmkrc
-
-```
-$pdf_previewer = "start okular %O %S";
-$pdf_update_method = 4;
-
-$pdf_previewer = "start xpdf -remote %R %O %S";
-$pdf_update_method = 4;
-$pdf_update_command = "xpdf -remote %R -reload";
-
-$dvi_previewer = 'start xdvi -watchfile 1.5';
-$ps_previewer  = 'start gv --watch';
-$pdf_previewer = 'start evince';
-
-$pdf_previewer = "start okular %O %S";
-$pdf_update_method = 4;
-```
+ln -s ~/dotfiles/.latexmkrc ~/.latexmkrc
 
 # Power management 
 
@@ -104,7 +87,7 @@ and turn on the VNC setting in there
 `sudo apt-get install real-vnc-server`
 
 ## set the resolution
-in the /root/config.txt comment out below to get full resolution in
+in the /boot/config.txt comment out below to get full resolution in
 `dtoverlay=vc4-kms-v3d`
 
 # AWS configuration

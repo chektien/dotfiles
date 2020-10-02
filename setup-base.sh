@@ -3,13 +3,14 @@
 # config git
 git config --global user.email "chek@gamesstudio.org"
 git config --global user.name "chektien"
+ln -s ~/dotfiles/ssh-config/config ~/.ssh/config
 
 # ssh-keygen and copy pub key to github
 git clone git@github.com:chektien/dotfiles.git
 
 # install some essentials
 # mosh server for nicer connectivity to ssh 
-sudo apt install mosh tmux autojump cmake zsh openconnect
+sudo apt install vim-gtk mosh tmux autojump cmake zsh openconnect dnsmasq
 
 # link up .zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
@@ -52,3 +53,7 @@ rm addcron
 
 # network-manager-gnome for desktop wifi management
 #sudo apt install network-manager network-manager-gnome
+
+# latex, and note texlive-full is 5gb
+sudo apt install texlive-full latexmk libsynctex-dev xdotool zathura
+
