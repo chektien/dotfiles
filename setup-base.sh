@@ -43,17 +43,35 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 # install AWS CLi out of any venv
 # https://ownthe.cloud/posts/configure-aws-cli-on-raspberry-pi/
-pip install awsclipip install awscli
+# add to rc files export PATH=/home/pi/.local/bin:$PATH
+pip install awscli
 
-# install tightvncserver
-sudo apt install tightvncserver
-echo "@reboot su - pi -c '/usr/bin/tightvncserver -geometry 1366x1024'" >> addcron
-crontab addcron
-rm addcron
 
 # network-manager-gnome for desktop wifi management
 #sudo apt install network-manager network-manager-gnome
 
 # latex, and note texlive-full is 5gb
 sudo apt install texlive-full latexmk libsynctex-dev xdotool zathura
+
+# install samba server to become NAS
+# e.g., allow smb://10.1.1.1 etc to serve files
+# input a password for samba username pi
+sudo apt install samba samba-common-bin
+sudo smbpasswd -a pi
+
+# install tiger vnc: built on top of tightvnc
+# realvnc only plays well with it's own viewer but ipad is using screens
+# start vncserver with the command below
+# vncserver :1 -geometry 1398x1024 -depth 32 -localhost no
+sudo apt install tigervnc-standalone-server
+echo "@reboot su - pi -c '/usr/bin/vncserver -geometry 1366x1024 -depth 32 -localhost no'" >> addcron
+crontab addcron
+rm addcron
+vncpasswd
+
+# alternative simpler vnc: install tightvncserver
+#sudo apt install tightvncserver
+#echo "@reboot su - pi -c '/usr/bin/tightvncserver -geometry 1366x1024'" >> addcron
+#crontab addcron
+#rm addcron
 

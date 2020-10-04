@@ -18,6 +18,13 @@ alias create-repo=~/dotfiles/create-repo.sh
 alias temp='/usr/bin/vcgencmd measure_temp'
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
 
+# android
+export ANDROID_SDK_ROOT=/home/pi/android-sdk
+export PATH=$ANDROID_SDK_ROOT/cmdline-tools/tools/bin:$PATH
+
+# include this mainly for aws cli
+export PATH=/home/pi/.local/bin:$PATH
+
 # texlive
 export PATH=/usr/local/texlive/2020/bin/armhf-linux:$PATH
 

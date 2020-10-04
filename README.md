@@ -11,11 +11,27 @@ After disabling network-manager, need to
 1. add `name_servers=8.8.8.8` to `/etc/resolveconf.conf`
 2. 
 
+## BUG in WPA Enterprise for wireless driver
+
+Had to do the following in `/lib/dhcpcd/dhcpcd-hooks/10-wpa_supplicant`
+```
+#wpa_supplicant_driver="${wpa_supplicant_driver:-nl80211,wext}"
+wpa_supplicant_driver="${wpa_supplicant_driver:-wext}"
+```
+
+(ref: https://www.raspberrypi.org/forums/viewtopic.php?t=253567)
+
 ## VPN into e.g., ICT-WIFI
 sudo openconnect -u LABA100855 --servercert pin-sha256:qYK/8Bv38RokYkfHqvmberk6RYxI2QGbaGxdxWFKHy4= --authgroup=ictvpn 118.189.138.35
 
 ## config to use raspi usb-c as an ethernet device
 https://www.hardill.me.uk/wordpress/2019/11/02/pi4-usb-c-gadget/
+
+Need to add 
+```
+@reboot /root/usb.sh
+```
+to crontab
 
 ## ssh into rpi
 ssh-keygen -R raspberrypi.local  (this will error if never login before, idea is to clear out old)
@@ -100,4 +116,3 @@ and key in the ID and Secret from AWS
 ln -s ~/dotfiles/jupyter-config ~/.jupyter
 ln -s ~/dotfiles/zathura-config ~/.config/zathura 
 ```
-
