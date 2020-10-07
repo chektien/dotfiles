@@ -1,5 +1,5 @@
 # vim
-*.session
+session.vim
 .undodir/
 
 # mac
