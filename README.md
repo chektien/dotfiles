@@ -11,6 +11,16 @@ After disabling network-manager, need to
 1. add `name_servers=8.8.8.8` to `/etc/resolveconf.conf`
 2. 
 
+## define static IP for wireless LAN
+Add the following to `/etc/dhcpcd.conf`
+```
+# define static ip for wireless LAN
+interface wlan0
+static ip_address=192.168.86.88/24
+static routers=192.168.86.1
+static domain_name_servers=192.168.86.1 8.8.8.8
+```
+
 ## BUG in WPA Enterprise for wireless driver
 
 Had to do the following in `/lib/dhcpcd/dhcpcd-hooks/10-wpa_supplicant`
