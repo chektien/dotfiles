@@ -1,5 +1,7 @@
 # https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md
 
+# To 
+
 sudo apt install hostapd
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd

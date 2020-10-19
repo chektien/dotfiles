@@ -104,6 +104,17 @@ Then add
 
 # VNC in raspbian
 
+## tigervnc (currenty using)
+Install tigervnc (not sure of the exact recipe...)
+```
+sudo apt install tigervnc-standalone-server
+```
+
+Add the following to crontab
+```
+echo "@reboot su - pi -c '/usr/bin/vncserver -geometry 1366x1024 -depth 32 -localhost no'" >> addcron 
+```
+
 ## built-in
 `sudo raspi-config`
 and turn on the VNC setting in there
@@ -125,4 +136,12 @@ and key in the ID and Secret from AWS
 ```
 ln -s ~/dotfiles/jupyter-config ~/.jupyter
 ln -s ~/dotfiles/zathura-config ~/.config/zathura 
+```
+
+# react
+First update the apt repo to include latest version of nodejs (replace `14.x` with the latest)
+```
+sudo su
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
+apt install -y nodejs
 ```
