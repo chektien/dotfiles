@@ -145,3 +145,8 @@ sudo su
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
 apt install -y nodejs
 ```
+
+Increase the file watchers to remove the annoying err msg during `npm start`
+```
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
