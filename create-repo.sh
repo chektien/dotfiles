@@ -1,6 +1,6 @@
 #!/bin/bash
 # GitHub API Token
-GITHUB_API_TOKEN='2c703be5a57e46f877f74d09cdd13818bea83cfa'
+GITHUB_API_TOKEN='c0243dc2689c2b215462795accac329ab5495671'
 
 # GitHub User Name
 GITHUB_USERNAME='chektien'

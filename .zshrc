@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-#  shortcuts
+# shortcuts
 alias vi=vim
 alias python=python3
 alias pip=pip3
@@ -17,6 +17,22 @@ alias fix-zsh-history=~/dotfiles/fix-zsh-history.sh
 alias create-repo=~/dotfiles/create-repo.sh
 alias temp='/usr/bin/vcgencmd measure_temp'
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
+
+# java
+export JAVA_HOME=/opt/jdk1.8.0_261
+export PATH=$JAVA_HOME/bin:$PATH
+
+# android latest downloaded from google
+export ANDROID_HOME=/home/pi/android-sdk
+export ANDROID_SDK_ROOT=/home/pi/android-sdk
+export PATH=$ANDROID_SDK_ROOT/cmdline-tools/tools/bin:$PATH
+
+# android from apt
+#export ANDROID_SDK_ROOT=/usr/lib/android-sdk
+#export PATH=$ANDROID_SDK_ROOT/platform-tools/tools/bin:$PATH
+
+# include this mainly for aws cli
+export PATH=/home/pi/.local/bin:$PATH
 
 # texlive
 export PATH=/usr/local/texlive/2020/bin/armhf-linux:$PATH

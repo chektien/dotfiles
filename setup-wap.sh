@@ -1,3 +1,7 @@
+# https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md
+
+# To 
+
 sudo apt install hostapd
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
@@ -5,14 +9,14 @@ sudo apt install dnsmasq
 sudo DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-persistent
 
 # then edit the following
-#sudo vim /etc/sysctl.d/routed-ap.conf
+#sudo nano /etc/dhcpcd.conf
+# comment out the current `interface wlan0` section if there was a static ip set
+# then add the following
 #interface wlan0
     #static ip_address=192.168.8.1/24
     #nohook wpa_supplicant
 
-
-#sudo nano /etc/dhcpcd.conf
-## https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md
+#sudo vim /etc/sysctl.d/routed-ap.conf
 ## Enable IPv4 routing
 #net.ipv4.ip_forward=1
 
@@ -20,6 +24,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 sudo netfilter-persistent save
 
+# save the old config
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 
 #sudo vim /etc/dnsmasq.conf
@@ -30,8 +35,11 @@ sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 #address=/gw.wlan/192.168.8.1
                 ## Alias for this router
 
-#sudo rfkill unblock wlan
+# Add the following to `/etc/default/hostapd
+# DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
+# ensure 5GHz WiFi radio is not blocked by default
+#sudo rfkill unblock wlan
 
 #sudo vim /etc/hostapd/hostapd.conf
 #country_code=GB

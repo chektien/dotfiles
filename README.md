@@ -11,11 +11,37 @@ After disabling network-manager, need to
 1. add `name_servers=8.8.8.8` to `/etc/resolveconf.conf`
 2. 
 
+## define static IP for wireless LAN
+Add the following to `/etc/dhcpcd.conf`
+```
+# define static ip for wireless LAN
+interface wlan0
+static ip_address=192.168.86.88/24
+static routers=192.168.86.1
+static domain_name_servers=192.168.86.1 8.8.8.8
+```
+
+## BUG in WPA Enterprise for wireless driver
+
+Had to do the following in `/lib/dhcpcd/dhcpcd-hooks/10-wpa_supplicant`
+```
+#wpa_supplicant_driver="${wpa_supplicant_driver:-nl80211,wext}"
+wpa_supplicant_driver="${wpa_supplicant_driver:-wext}"
+```
+
+(ref: https://www.raspberrypi.org/forums/viewtopic.php?t=253567)
+
 ## VPN into e.g., ICT-WIFI
 sudo openconnect -u LABA100855 --servercert pin-sha256:qYK/8Bv38RokYkfHqvmberk6RYxI2QGbaGxdxWFKHy4= --authgroup=ictvpn 118.189.138.35
 
 ## config to use raspi usb-c as an ethernet device
 https://www.hardill.me.uk/wordpress/2019/11/02/pi4-usb-c-gadget/
+
+Need to add 
+```
+@reboot /root/usb.sh
+```
+to crontab
 
 ## ssh into rpi
 ssh-keygen -R raspberrypi.local  (this will error if never login before, idea is to clear out old)
@@ -60,24 +86,7 @@ This requires powerline fonts and symbols.
 
 # LaTeX
 
-Need to find where the following file lies...
-~/.latexmkrc
-
-```
-$pdf_previewer = "start okular %O %S";
-$pdf_update_method = 4;
-
-$pdf_previewer = "start xpdf -remote %R %O %S";
-$pdf_update_method = 4;
-$pdf_update_command = "xpdf -remote %R -reload";
-
-$dvi_previewer = 'start xdvi -watchfile 1.5';
-$ps_previewer  = 'start gv --watch';
-$pdf_previewer = 'start evince';
-
-$pdf_previewer = "start okular %O %S";
-$pdf_update_method = 4;
-```
+ln -s ~/dotfiles/.latexmkrc ~/.latexmkrc
 
 # Power management 
 
@@ -95,6 +104,17 @@ Then add
 
 # VNC in raspbian
 
+## tigervnc (currenty using)
+Install tigervnc (not sure of the exact recipe...)
+```
+sudo apt install tigervnc-standalone-server
+```
+
+Add the following to crontab
+```
+echo "@reboot su - pi -c '/usr/bin/vncserver -geometry 1366x1024 -depth 32 -localhost no'" >> addcron 
+```
+
 ## built-in
 `sudo raspi-config`
 and turn on the VNC setting in there
@@ -104,7 +124,7 @@ and turn on the VNC setting in there
 `sudo apt-get install real-vnc-server`
 
 ## set the resolution
-in the /root/config.txt comment out below to get full resolution in
+in the /boot/config.txt comment out below to get full resolution in
 `dtoverlay=vc4-kms-v3d`
 
 # AWS configuration
@@ -118,3 +138,10 @@ ln -s ~/dotfiles/jupyter-config ~/.jupyter
 ln -s ~/dotfiles/zathura-config ~/.config/zathura 
 ```
 
+# react
+First update the apt repo to include latest version of nodejs (replace `14.x` with the latest)
+```
+sudo su
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
+apt install -y nodejs
+```
