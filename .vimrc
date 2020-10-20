@@ -49,6 +49,9 @@ set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab
+augroup js
+    autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
+augroup END
 
 " compile and run python
 augroup compilations
