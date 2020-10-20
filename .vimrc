@@ -33,10 +33,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'pangloss/vim-javascript'
     "Plug 'sirver/ultisnips'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
-	"Plug 'pangloss/vim-javascript'
 call plug#end()
 
 " theming
@@ -49,6 +49,9 @@ set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab
+augroup js
+    autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
+augroup END
 
 " compile and run python
 augroup compilations
