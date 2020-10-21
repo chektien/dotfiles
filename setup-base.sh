@@ -12,6 +12,22 @@ git clone git@github.com:chektien/dotfiles.git
 # mosh server for nicer connectivity to ssh 
 sudo apt install vim-gtk mosh tmux autojump cmake zsh openconnect dnsmasq
 
+# vim
+sudo apt install ncurses-dev
+git clone https://github.com/vim/vim.git
+./configure --with-features=huge \
+    --enable-multibyte \
+    --enable-rubyinterp=yes \
+    --enable-python3interp=yes \
+    --with-python3-config-dir=$(python3-config --configdir) \
+    --enable-perlinterp=yes \
+    --enable-luainterp=yes \
+    --enable-gui=auto \
+    --enable-gtk2-check \
+    --enable-cscope \
+    --prefix=/usr/local
+sudo make install
+
 # link up .zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 
@@ -45,7 +61,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 # https://ownthe.cloud/posts/configure-aws-cli-on-raspberry-pi/
 # add to rc files export PATH=/home/pi/.local/bin:$PATH
 pip install awscli
-
 
 # network-manager-gnome for desktop wifi management
 #sudo apt install network-manager network-manager-gnome
