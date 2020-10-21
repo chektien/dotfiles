@@ -7,8 +7,8 @@ set t_Co=256
 set hidden
 
 " lexical dict settings
-"set spell spelllang=en
-"hi SpellBad cterm=underline ctermfg=red
+set spell spelllang=en
+hi SpellBad cterm=underline ctermfg=red
 
 " terminal splitting
 set splitbelow
@@ -25,9 +25,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'lervag/vimtex'
 	"Plug 'honza/vim-snippets'
 	Plug 'thaerkh/vim-workspace'
-	"Plug 'majutsushi/tagbar'
-	"Plug 'plasticboy/vim-markdown'
-    "Plug 'reedes/vim-lexical'
+    Plug 'majutsushi/tagbar'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'reedes/vim-lexical'
     "Plug 'nvie/vim-flake8'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
