@@ -28,12 +28,17 @@ call plug#begin('~/.vim/plugged')
 	Plug 'plasticboy/vim-markdown'
     Plug 'reedes/vim-lexical'
     Plug 'nvie/vim-flake8'
-    Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py' }
-    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'pangloss/vim-javascript'
+
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " note that need to use :CocInstall coc-tsserver coc-html coc-json coc-css
+    " to install these extensions to get the completions working for the languages
+
+    "Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py' }
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
     "Plug 'sirver/ultisnips'
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
@@ -69,6 +74,35 @@ augroup lexical
     autocmd FileType textile call lexical#init()
     autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
+
+" coc use tab and s-tab to navigate completion menu
+inoremap <silent><expr> <Tab>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<Tab>" :
+            \ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" coc abort completion menu when backspace
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" coc statusline support
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" coc documention with K
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+    else
+        execute '!' . &keywordprg . " " .
+        expand('<cword>')
+    endif
+endfunction
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -130,6 +164,9 @@ augroup END
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+
+" coc
+let g:coc_disable_startup_warning = 1
 
 " vim-javascript
 " let g:javascript_plugin_jsdoc = 1
