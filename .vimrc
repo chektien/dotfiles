@@ -4,10 +4,11 @@ filetype plugin on
 set nocompatible
 set encoding=utf-8
 set t_Co=256
+set hidden
 
 " lexical dict settings
-set spell spelllang=en
-hi SpellBad cterm=underline ctermfg=red
+"set spell spelllang=en
+"hi SpellBad cterm=underline ctermfg=red
 
 " terminal splitting
 set splitbelow
@@ -18,24 +19,24 @@ call plug#begin('~/.vim/plugged')
     Plug 'nlknguyen/papercolor-theme'
 	Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-fugitive'
-	Plug 'scrooloose/nerdcommenter'
 	Plug 'scrooloose/nerdtree'
-	Plug 'vim-syntastic/syntastic'
+	Plug 'scrooloose/nerdcommenter'
+    "Plug 'vim-syntastic/syntastic'
 	Plug 'lervag/vimtex'
-	Plug 'honza/vim-snippets'
+	"Plug 'honza/vim-snippets'
 	Plug 'thaerkh/vim-workspace'
-	Plug 'majutsushi/tagbar'
-	Plug 'plasticboy/vim-markdown'
-    Plug 'reedes/vim-lexical'
-    Plug 'nvie/vim-flake8'
+	"Plug 'majutsushi/tagbar'
+	"Plug 'plasticboy/vim-markdown'
+    "Plug 'reedes/vim-lexical'
+    "Plug 'nvie/vim-flake8'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'pangloss/vim-javascript'
-
+    "Plug 'pangloss/vim-javascript'
+    "Plug 'leafgarland/typescript-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " note that need to use :CocInstall coc-tsserver coc-html coc-json coc-css
-    " to install these extensions to get the completions working for the languages
+    "Plug 'airblade/vim-gitgutter'
+    "Plug 'Xuyuanp/nerdtree-git-plugin'
 
     "Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py' }
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
@@ -55,6 +56,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 augroup js
+    autocmd!
     autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
 augroup END
 
@@ -75,6 +77,41 @@ augroup lexical
     autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
 
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
+" coc vim version warning suppression
+let g:coc_disable_startup_warning = 1
+
+" coc extensions
+let g:coc_global_extensions = [
+            \ 'coc-tsserver',
+            \ 'coc-eslint',
+            \ 'coc-html',
+            \ 'coc-json',
+            \ 'coc-python',
+            "\ 'coc-xml',
+            "\ 'coc-css',
+            \ 'coc-prettier'
+            \ ]
+
 " coc use tab and s-tab to navigate completion menu
 inoremap <silent><expr> <Tab>
             \ pumvisible() ? "\<C-n>" :
@@ -89,7 +126,7 @@ function! s:check_back_space() abort
 endfunction
 
 " coc statusline support
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " coc documention with K
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -122,6 +159,9 @@ let g:vimtex_view_general_viewer = "zathura"
 "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 "let g:vimtex_view_general_options_latexmk = '--unique'
 
+" enable prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " key mappings
 let mapleader = ","
 map <leader>hd :Toc<CR>
@@ -133,9 +173,16 @@ map <leader>nn :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 map <leader>nb :NERDTreeFromBookmark<CR>
 map <leader>p "_dP
-map <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>ws :ToggleWorkspace<CR>
 inoremap jj <esc>
+"map <leader>f :YcmCompleter FixIt<CR>
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+
+" coc applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 set whichwrap+=<,>,h,l,[,]
 
@@ -150,12 +197,13 @@ augroup END
 let g:workspace_autosave_always = 1
 let g:workspace_session_name = 'session.vim'
 let g:workspace_autosave_untrailspaces = 0
+"let g:workspace_undodir = '~/.vim/.undodir'
 
 " youcompleteme
-augroup ycm
-    autocmd!
-    autocmd BufEnter *.tex let g:ycm_auto_trigger=0 
-augroup END
+"augroup ycm
+    "autocmd!
+    "autocmd BufEnter *.tex let g:ycm_auto_trigger=0 
+"augroup END
 "let g:ycm_semantic_triggers = { 'tex': [] }
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -164,9 +212,6 @@ augroup END
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
-
-" coc
-let g:coc_disable_startup_warning = 1
 
 " vim-javascript
 " let g:javascript_plugin_jsdoc = 1
