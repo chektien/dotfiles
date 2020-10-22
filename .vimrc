@@ -19,25 +19,25 @@ call plug#begin('~/.vim/plugged')
     Plug 'nlknguyen/papercolor-theme'
 	Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 	Plug 'scrooloose/nerdtree'
 	Plug 'scrooloose/nerdcommenter'
-    "Plug 'vim-syntastic/syntastic'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'lervag/vimtex'
-	"Plug 'honza/vim-snippets'
 	Plug 'thaerkh/vim-workspace'
     Plug 'majutsushi/tagbar'
     Plug 'plasticboy/vim-markdown'
     Plug 'reedes/vim-lexical'
-    "Plug 'nvie/vim-flake8'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
-    "Plug 'pangloss/vim-javascript'
-    "Plug 'leafgarland/typescript-vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    "Plug 'airblade/vim-gitgutter'
-    "Plug 'Xuyuanp/nerdtree-git-plugin'
 
+	"Plug 'honza/vim-snippets'
+    "Plug 'nvie/vim-flake8'
+    "Plug 'vim-syntastic/syntastic'
     "Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py' }
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
     "Plug 'sirver/ultisnips'
@@ -77,15 +77,15 @@ augroup lexical
     autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
 
-" Some servers have issues with backup files, see #649.
+" coc some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" coc Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
 
-" Don't pass messages to |ins-completion-menu|.
+" coc Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -96,9 +96,6 @@ if has("patch-8.1.1564")
 else
     set signcolumn=yes
 endif
-
-" coc vim version warning suppression
-let g:coc_disable_startup_warning = 1
 
 " coc extensions
 let g:coc_global_extensions = [
@@ -125,9 +122,6 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" coc statusline support
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " coc documention with K
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -140,6 +134,13 @@ function! s:show_documentation()
         expand('<cword>')
     endif
 endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+else
+    inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " vim-airline
 let g:airline_powerline_fonts = 1
