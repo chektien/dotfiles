@@ -5,6 +5,18 @@ set nocompatible
 set encoding=utf-8
 set t_Co=256
 set hidden
+set autoread " refresh when file changed elsewhere
+set autowrite " save when leave modified buffer
+set nobackup " no backup original files
+set nowritebackup
+set undofile " persistent undo
+set undolevels=1000
+
+" folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " lexical dict settings
 set spell spelllang=en
@@ -77,10 +89,6 @@ augroup lexical
     autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
 
-" coc some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
 " coc Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -141,6 +149,7 @@ if has('nvim')
 else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
+" }}} plugin config for coc "
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -226,3 +235,10 @@ let g:vim_markdown_folding_disabled = 1
 "     " ignore errors about Ionic tags
 "     let g:syntastic_html_tidy_ignore_errors += ["<a-", "discarding
 "     unexpected </a-"]
+
+" change swapfiles and undodir locations
+" Make cursor always on center of screen by default
+if !isdirectory($HOME . "/.vim/swapfiles") | call mkdir($HOME . "/.vim/swapfiles", "p") | endif
+    set dir=$HOME/.vim/swapfiles//
+if !isdirectory($HOME. "/.vim/undotree") | call mkdir($HOME . "/.vim/undotree", "p") | endif
+    set undodir=$HOME/.vim/undotree//
