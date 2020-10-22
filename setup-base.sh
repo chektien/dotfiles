@@ -46,7 +46,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 # add to rc files export PATH=/home/pi/.local/bin:$PATH
 pip install awscli
 
-
 # network-manager-gnome for desktop wifi management
 #sudo apt install network-manager network-manager-gnome
 
