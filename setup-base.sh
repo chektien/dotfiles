@@ -3,6 +3,7 @@
 # config git
 git config --global user.email "chek@gamesstudio.org"
 git config --global user.name "chektien"
+git config --global core.editor "vim"
 ln -s ~/dotfiles/ssh-config/config ~/.ssh/config
 
 # ssh-keygen and copy pub key to github
