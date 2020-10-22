@@ -1,31 +1,3 @@
-" general formatting
-syntax enable
-filetype plugin on
-set nocompatible
-set encoding=utf-8
-set t_Co=256
-set hidden
-set autoread " refresh when file changed elsewhere
-set autowrite " save when leave modified buffer
-set nobackup " no backup original files
-set nowritebackup
-set undofile " persistent undo
-set undolevels=1000
-
-" folding
-set foldmethod=indent
-set foldnestmax=10
-set nofoldenable
-set foldlevel=2
-
-" lexical dict settings
-set spell spelllang=en
-hi SpellBad cterm=underline ctermfg=red
-
-" terminal splitting
-set splitbelow
-set termwinsize=15x0
-
 call plug#begin('~/.vim/plugged')
     Plug 'altercation/vim-colors-solarized'
     Plug 'nlknguyen/papercolor-theme'
@@ -56,6 +28,35 @@ call plug#begin('~/.vim/plugged')
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     "Plug 'davidhalter/jedi-vim'
 call plug#end()
+
+" general formatting
+syntax enable
+filetype plugin on
+set nocompatible
+set encoding=utf-8
+set t_Co=256
+set hidden
+set autoread " refresh when file changed elsewhere
+set autowrite " save when leave modified buffer
+set nobackup " no backup original files
+set nowritebackup
+set undofile " persistent undo
+set undolevels=1000
+set number relativenumber "relative line numbers
+
+" folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
+" lexical dict settings
+set spell spelllang=en
+hi SpellBad cterm=underline ctermfg=red
+
+" terminal splitting
+set splitbelow
+set termwinsize=15x0
 
 " theming
 colorscheme PaperColor
