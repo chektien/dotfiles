@@ -1,0 +1,37 @@
+call plug#begin('~/.vim/plugged')
+	"Plug 'honza/vim-snippets'
+    "Plug 'nvie/vim-flake8'
+    "Plug 'vim-syntastic/syntastic'
+    "Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py' }
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+    "Plug 'sirver/ultisnips'
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+    "Plug 'davidhalter/jedi-vim'
+call plug#end()
+
+" youcompleteme
+"augroup ycm
+    "autocmd!
+    "autocmd BufEnter *.tex let g:ycm_auto_trigger=0 
+"augroup END
+"let g:ycm_semantic_triggers = { 'tex': [] }
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_confirm_extra_conf = 0
+"map <leader>f :YcmCompleter FixIt<CR>
+
+" vim-javascript
+" let g:javascript_plugin_jsdoc = 1
+
+" " Set up the arrays to ignore for later
+" if !exists('g:syntastic_html_tidy_ignore_errors')
+"     let g:syntastic_html_tidy_ignore_errors = []
+"     endif
+"     " Ignore a-frame tags in HTML syntax checking
+"     " See http://stackoverflow.com/questions/30366621
+"     " ignore errors about Ionic tags
+"     let g:syntastic_html_tidy_ignore_errors += ["<a-", "discarding
+"     unexpected </a-"]
+
+"let g:workspace_undodir = '~/.vim/.undodir'

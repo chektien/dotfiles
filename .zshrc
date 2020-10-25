@@ -37,6 +37,9 @@ export PATH=/home/pi/.local/bin:$PATH
 # texlive
 export PATH=/usr/local/texlive/2020/bin/armhf-linux:$PATH
 
+# change default editor
+export VISUAL="vim"
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/pi/.oh-my-zsh"
 

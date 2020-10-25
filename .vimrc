@@ -1,3 +1,4 @@
+" plugins
 call plug#begin('~/.vim/plugged')
     Plug 'altercation/vim-colors-solarized'
     Plug 'nlknguyen/papercolor-theme'
@@ -17,18 +18,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'maxmellon/vim-jsx-pretty'
     Plug 'pangloss/vim-javascript'
     Plug 'leafgarland/typescript-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-	"Plug 'honza/vim-snippets'
-    "Plug 'nvie/vim-flake8'
-    "Plug 'vim-syntastic/syntastic'
-    "Plug 'Valloric/YouCompleteMe', { 'commit': 'd98f896', 'do': './install.py' }
-    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-    "Plug 'sirver/ultisnips'
-    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-    "Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " general formatting
@@ -45,6 +38,8 @@ set nowritebackup
 set undofile " persistent undo
 set undolevels=1000
 set number relativenumber "relative line numbers
+set updatetime=300 " for coc to work better
+set shortmess+=c " coc to work better
 
 " folding
 set foldmethod=indent
@@ -63,10 +58,8 @@ set termwinsize=15x0
 " theming
 colorscheme PaperColor
 set background=dark
-"set number
-"set laststatus=2
 
-" vim tabs
+" tabs
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -91,13 +84,6 @@ augroup lexical
     autocmd FileType textile call lexical#init()
     autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
-
-" coc Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" coc Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -172,7 +158,7 @@ let g:vimtex_view_general_viewer = "zathura"
 "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 "let g:vimtex_view_general_options_latexmk = '--unique'
 
-" enable prettier
+" enable prettier to format file automatically
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " key mappings
@@ -185,12 +171,13 @@ map <leader>tt :TagbarToggle<CR>
 map <leader>nn :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 map <leader>nb :NERDTreeFromBookmark<CR>
+nmap <leader>tb :TagbarToggle<CR>
 map <leader>p "_dP
 nnoremap <leader>ws :ToggleWorkspace<CR>
 inoremap jj <esc>
-"map <leader>f :YcmCompleter FixIt<CR>
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>rn <Plug>(coc-rename)
 
 " coc applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -210,34 +197,9 @@ augroup END
 let g:workspace_autosave_always = 1
 let g:workspace_session_name = 'session.vim'
 let g:workspace_autosave_untrailspaces = 0
-"let g:workspace_undodir = '~/.vim/.undodir'
-
-" youcompleteme
-"augroup ycm
-    "autocmd!
-    "autocmd BufEnter *.tex let g:ycm_auto_trigger=0 
-"augroup END
-"let g:ycm_semantic_triggers = { 'tex': [] }
-"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"let g:ycm_autoclose_preview_window_after_insertion = 1
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_confirm_extra_conf = 0
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
-
-" vim-javascript
-" let g:javascript_plugin_jsdoc = 1
-
-" " Set up the arrays to ignore for later
-" if !exists('g:syntastic_html_tidy_ignore_errors')
-"     let g:syntastic_html_tidy_ignore_errors = []
-"     endif
-"     " Ignore a-frame tags in HTML syntax checking
-"     " See http://stackoverflow.com/questions/30366621
-"     " ignore errors about Ionic tags
-"     let g:syntastic_html_tidy_ignore_errors += ["<a-", "discarding
-"     unexpected </a-"]
 
 " change swapfiles and undodir locations
 " Make cursor always on center of screen by default
@@ -245,3 +207,8 @@ if !isdirectory($HOME . "/.vim/swapfiles") | call mkdir($HOME . "/.vim/swapfiles
     set dir=$HOME/.vim/swapfiles//
 if !isdirectory($HOME. "/.vim/undotree") | call mkdir($HOME . "/.vim/undotree", "p") | endif
     set undodir=$HOME/.vim/undotree//
+
+" fix strange brackets in nerdtree after a re-source
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
