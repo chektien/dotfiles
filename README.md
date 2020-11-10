@@ -63,6 +63,9 @@ ssh pi@raspberrypi.local
 ### in vim
 - `PlugClean`
 - `PlugInstall`
+- coc.nvim will install some extensions
+- the coc-settings.json file may differ on a mac vs raspi
+  - e.g., the clangd directory is auto in mac but manually set in raspi
 
 # git
 
@@ -79,7 +82,7 @@ Host github.com
 
 # Install zsh
 
-Then shift the *.zshc* into `~/`. 
+Then shift the *.zshrc* into `~/`. 
 Use *agnostic* theme to get the fancy formatting in terminal.
 Use *power10k* for the ultimate fanciness.
 This requires powerline fonts and symbols. 

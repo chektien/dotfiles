@@ -5,5 +5,6 @@
     "javascriptreact",
     "typescriptreact",
     "json"
-  ]
+  ],
+  "clangd.path": "/Users/ch3k/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
 }
