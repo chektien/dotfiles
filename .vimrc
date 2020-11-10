@@ -93,7 +93,6 @@ map <leader>so :so %<CR>
 map <leader>lv :VimtexView<CR>
 map <leader>ll :VimtexCompile<CR>
 map <leader>lt :VimtexTocOpen<CR>
-map <leader>tt :TagbarToggle<CR>
 map <leader>nn :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 map <leader>nb :NERDTreeFromBookmark<CR>
@@ -118,6 +117,11 @@ nmap <silent> gr <Plug>(coc-references)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current))
+
 " coc list
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
@@ -137,12 +141,17 @@ augroup lexical
     autocmd FileType markdown,mkd call lexical#init()
     autocmd FileType tex call lexical#init()
     autocmd FileType textile call lexical#init()
-    autocmd FileType text call lexical#init({ 'spell': 0 })
+    autocmd FileType text,c,cpp call lexical#init({ 'spell': 0 })
 augroup END
 
 " lexical dict settings
 set spell spelllang=en
-hi SpellBad cterm=underline ctermfg=red
+hi SpellBad ctermfg=red 
+"cterm=underline 
+
+" thesaurus
+let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
+let g:lexical#thesaurus_key = '<leader>tt'
 
 " plugin config: vim-lexical }}}
 
