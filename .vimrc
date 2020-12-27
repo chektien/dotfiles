@@ -28,6 +28,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'pangloss/vim-javascript'
     Plug 'leafgarland/typescript-vim'
     Plug 'alvan/vim-closetag'
+    Plug 'vim-pandoc/vim-pandoc'
+    Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -77,9 +79,10 @@ set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab
-augroup js
+augroup tabs
     autocmd!
     autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
+    autocmd Filetype c setlocal shiftwidth=2 tabstop=2
 augroup END
 
 " general sets }}}
@@ -120,7 +123,11 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current))
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" navigate errors in code
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " coc list
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
@@ -141,7 +148,7 @@ augroup lexical
     autocmd FileType markdown,mkd call lexical#init()
     autocmd FileType tex call lexical#init()
     autocmd FileType textile call lexical#init()
-    autocmd FileType text,c,cpp call lexical#init({ 'spell': 0 })
+    autocmd FileType text,c,cpp,bib call lexical#init({ 'spell': 0 })
 augroup END
 
 " lexical dict settings

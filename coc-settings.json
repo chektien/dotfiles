@@ -6,5 +6,6 @@
     "typescriptreact",
     "json"
   ],
-  "clangd.path": "/usr/bin/clangd-9"
+  "clangd.path": "/usr/bin/clangd-9",
+  "prettier.tabWidth": 2
 }
