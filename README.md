@@ -65,7 +65,7 @@ ssh pi@raspberrypi.local
 - `PlugInstall`
 - coc.nvim will install some extensions
 - the coc-settings.json file may differ on a mac vs raspi
-  - e.g., the clangd directory is auto in mac but manually set in raspi
+  - e.g., the clangd directory (TODO need to remove this sync in github)
 
 # git
 
