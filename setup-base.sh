@@ -14,7 +14,7 @@ git clone git@github.com:chektien/dotfiles.git
 sudo apt install vim-gtk mosh tmux autojump cmake zsh openconnect dnsmasq
 
 # vim
-sudo apt install ncurses-dev
+sudo apt install ncurses-dev node
 git clone https://github.com/vim/vim.git
 ./configure --with-features=huge \
     --enable-multibyte \
@@ -47,9 +47,6 @@ git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zs
 # plugins=(git zsh-autosuggestions autojump zsh-syntax-highlighting)
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# install 
-sudo apt install vim 
 
 # link up .vimrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
