@@ -37,6 +37,17 @@ sudo openconnect -u LABA100855 --servercert pin-sha256:qYK/8Bv38RokYkfHqvmberk6R
 ## config to use raspi usb-c as an ethernet device
 https://www.hardill.me.uk/wordpress/2019/11/02/pi4-usb-c-gadget/
 
+## NordVPN
+download the .deb installer then
+sudo apt install ./xxx.deb
+sudo apt update
+sudo apt install nordvpn
+
+Then add SSH (22) and mosh (60000-61000) to the nordvpn whitelist ,e.g., 
+```
+nordvpn whitelist add ports 60000 61000
+```
+
 Need to add 
 ```
 @reboot /root/usb.sh
