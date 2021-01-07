@@ -14,7 +14,7 @@ git clone git@github.com:chektien/dotfiles.git
 sudo apt install vim-gtk mosh tmux autojump cmake zsh openconnect dnsmasq
 
 # vim
-sudo apt install ncurses-dev node
+sudo apt install ncurses-dev
 git clone https://github.com/vim/vim.git
 ./configure --with-features=huge \
     --enable-multibyte \
@@ -50,6 +50,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # link up .vimrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/coc-settings.json ~/.vim/coc-settings.json
 
 # install vim plug
 # after that need to run PlugInstall in a new vim session
@@ -69,8 +70,10 @@ sudo apt install texlive-full latexmk libsynctex-dev xdotool zathura
 # install samba server to become NAS
 # e.g., allow smb://10.1.1.1 etc to serve files
 # input a password for samba username pi
+# may want to ln up the smb.conf into /etc/samba/smb.conf
 sudo apt install samba samba-common-bin
 sudo smbpasswd -a pi
+sudo systemctl restart smbd
 
 # install tiger vnc: built on top of tightvnc
 # realvnc only plays well with it's own viewer but ipad is using screens

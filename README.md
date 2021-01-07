@@ -9,7 +9,6 @@ Then create ssh file in `<root>`
 If network-manager is installed, everything will be overridden.
 After disabling network-manager, need to
 1. add `name_servers=8.8.8.8` to `/etc/resolveconf.conf`
-2. 
 
 ## define static IP for wireless LAN
 Add the following to `/etc/dhcpcd.conf`
