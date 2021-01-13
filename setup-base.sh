@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# config tmux
+ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+
 # config git
 git config --global user.email "chek@gamesstudio.org"
 git config --global user.name "chektien"
@@ -10,8 +13,9 @@ ln -s ~/dotfiles/ssh-config/config ~/.ssh/config
 git clone git@github.com:chektien/dotfiles.git
 
 # install some essentials
-# mosh server for nicer connectivity to ssh 
-sudo apt install vim-gtk mosh tmux autojump cmake zsh openconnect dnsmasq
+# - mosh server for nicer connectivity to ssh 
+# - arp-scan to scan all other devices in the LAN
+sudo apt install vim-gtk mosh tmux autojump cmake zsh openconnect dnsmasq arp-scan
 
 # vim
 sudo apt install ncurses-dev
