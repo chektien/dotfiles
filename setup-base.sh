@@ -46,6 +46,7 @@ ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/coc-settings.json ~/.vim/coc-settings.json
 
 # link up neovim config
+mkdir -p .config/nvim
 ln -s ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 
 # link up .zshrc
