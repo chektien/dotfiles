@@ -20,6 +20,7 @@ alias fix-zsh-history=~/dotfiles/fix-zsh-history.sh
 alias create-repo=~/dotfiles/create-repo.sh
 alias temp='/usr/bin/vcgencmd measure_temp'
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
+alias adb=='noglob adb' # android logcat commands use `*` which conflicts with zsh "ending in"
 
 # java
 export JAVA_HOME=/opt/jdk1.8.0_261

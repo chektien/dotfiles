@@ -30,6 +30,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'alvan/vim-closetag'
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
+    Plug 'udalov/kotlin-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -51,6 +52,7 @@ set undolevels=1000
 set number relativenumber "relative line numbers
 set updatetime=300 " for coc to work better
 set shortmess+=c " coc to work better
+set regexpengine=0 " to fix groovy.vim syntax file error
 
 " make cursor always vertically centre
 set scrolloff=999
@@ -143,22 +145,21 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " plugin config: vim-lexical {{{
 
+" lexical dict settings
+
 augroup lexical
+    set spell spelllang=en
+    hi SpellBad ctermfg=red 
+    "cterm=underline 
     autocmd!
     autocmd FileType markdown,mkd call lexical#init()
     autocmd FileType tex call lexical#init()
     autocmd FileType textile call lexical#init()
-    autocmd FileType text,c,cpp,bib call lexical#init({ 'spell': 0 })
+    autocmd FileType text,c,cpp,bib,kt,py call lexical#init({ 'spell': 0 })
 augroup END
-
-" lexical dict settings
-set spell spelllang=en
-hi SpellBad ctermfg=red 
-"cterm=underline 
 
 " thesaurus
 let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
-let g:lexical#thesaurus_key = '<leader>tt'
 
 " plugin config: vim-lexical }}}
 
@@ -272,7 +273,8 @@ let g:coc_global_extensions = [
             "\ 'coc-ultisnips',
             "\ 'coc-xml',
             "\ 'coc-css',
-            \ 'coc-prettier'
+            \ 'coc-prettier',
+            \ 'coc-kotlin'
             \ ]
 
 " use tab and s-tab to navigate completion menu
@@ -320,11 +322,6 @@ if !isdirectory($HOME . "/.vim/swapfiles") | call mkdir($HOME . "/.vim/swapfiles
 if !isdirectory($HOME. "/.vim/undotree") | call mkdir($HOME . "/.vim/undotree", "p") | endif
     set undodir=$HOME/.vim/undotree//
 
-" fix strange brackets in nerdtree after a re-source
-if exists('g:loaded_webdevicons')
-    call webdevicons#refresh()
-endif
-
 " tab to complete first in list or choose first snippet
 "inoremap <silent><expr> <TAB>
             "\ pumvisible() ? coc#_select_confirm() :
@@ -340,5 +337,10 @@ endfunction
 
 " not sure what but some snippet thingy
 let g:coc_snippet_next = '<tab>'
+
+" fix strange brackets in nerdtree after a re-source
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
 
 " misc hacks }}}
