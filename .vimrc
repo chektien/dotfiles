@@ -5,6 +5,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
     Plug 'altercation/vim-colors-solarized'
     Plug 'nlknguyen/papercolor-theme'
+    Plug 'morhetz/gruvbox'
 	Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
@@ -54,6 +55,9 @@ set updatetime=300 " for coc to work better
 set shortmess+=c " coc to work better
 set regexpengine=0 " to fix groovy.vim syntax file error
 
+" python
+let g:python3_host_prog = '/usr/bin/python3'
+
 " make cursor always vertically centre
 set scrolloff=999
 "augroup VCenterCursor
@@ -71,11 +75,18 @@ let g:vim_markdown_folding_disabled = 1
 
 " terminal splitting
 set splitbelow
-set termwinsize=15x0
+"set termwinsize=15x0
 
 " theming
-colorscheme PaperColor
+if (has("termguicolors"))
+    set termguicolors
+endif
+colorscheme gruvbox
 set background=dark
+
+" to prevent old vim from black&white bug when using termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " tabs
 set tabstop=4
@@ -86,12 +97,16 @@ augroup tabs
     autocmd Filetype javascript setlocal shiftwidth=2 tabstop=2
     autocmd Filetype c setlocal shiftwidth=2 tabstop=2
 augroup END
-
+ 
 " general sets }}}
 
 " key mappings {{{
 set whichwrap+=<,>,h,l,[,] " wrap around when moving left/right
 
+" abbrevs
+ca t tabnew
+
+" general mappings
 let mapleader = ","
 map <leader>tm :term<CR>
 map <leader>so :so %<CR>
@@ -105,6 +120,9 @@ nmap <leader>tb :TagbarToggle<CR>
 map <leader>p "_dP
 nnoremap <leader>ws :ToggleWorkspace<CR>
 inoremap jj <esc>
+
+" neovim terminal
+:tnoremap <Esc> <C-\><C-n>
 
 " coc refactoring
 xmap <leader>f <Plug>(coc-format-selected)
@@ -169,6 +187,9 @@ let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
 augroup nerdTreeCD
     autocmd!
     autocmd BufEnter * if &buftype !=# 'terminal' | lcd %:p:h | endif 
+    "autocmd BufEnter * if (winnr("$")==1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    " Exit Vim if NERDTree is the only window left.
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 augroup END
 
 " plugin config: nerdtree }}}
@@ -181,7 +202,7 @@ endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_theme = 'papercolor'
+let g:airline_theme = 'gruvbox'
 " plugin config: vim-airline }}}
 
 " plugin config: vimtex {{{
@@ -266,16 +287,16 @@ let g:coc_global_extensions = [
             \ 'coc-html',
             \ 'coc-json',
             \ 'coc-python',
+            \ 'coc-kotlin',
             \ 'coc-clangd',
             \ 'coc-vimtex',
             \ 'coc-pairs',
             \ 'coc-snippets',
+            \ 'coc-prettier'
+            \ ]
             "\ 'coc-ultisnips',
             "\ 'coc-xml',
             "\ 'coc-css',
-            \ 'coc-prettier',
-            \ 'coc-kotlin'
-            \ ]
 
 " use tab and s-tab to navigate completion menu
 inoremap <silent><expr> <Tab>

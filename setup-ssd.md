@@ -18,7 +18,7 @@ sudo mount -t auto /dev/sda1 /owldata
 # edit fstab to mount on boot
 sudo vim /etc/fstab
 
-add /dev/sda1 /ssd auto noatime 0 0`
+add /dev/sda1 /owldata auto noatime 0 0`
 
 # edit /etc/samba/smb.conf
 add 
