@@ -183,6 +183,9 @@ let g:lexical#thesaurus_key = '<leader>tt'
 augroup nerdTreeCD
     autocmd!
     autocmd BufEnter * if &buftype !=# 'terminal' | lcd %:p:h | endif 
+    "autocmd BufEnter * if (winnr("$")==1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    " Exit Vim if NERDTree is the only window left.
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 augroup END
 
 " plugin config: nerdtree }}}
