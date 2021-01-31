@@ -33,6 +33,21 @@ git clone https://github.com/vim/vim.git
     --prefix=/usr/local
 sudo make install
 
+# neovim
+sudo apt install snapd
+sudo snap install nvim --classic
+
+# clangd for coc-nvim
+sudo apt install clang # somehow need to manually install deps first
+sudo apt install clangd-9
+
+# link up .vimrc
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/coc-settings.json ~/.vim/coc-settings.json
+
+# link up neovim config
+ln -s ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+
 # link up .zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 
@@ -51,10 +66,6 @@ git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zs
 # plugins=(git zsh-autosuggestions autojump zsh-syntax-highlighting)
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# link up .vimrc
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/coc-settings.json ~/.vim/coc-settings.json
 
 # install vim plug
 # after that need to run PlugInstall in a new vim session

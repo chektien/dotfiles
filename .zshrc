@@ -12,7 +12,9 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # shortcuts
-alias vi=vim
+alias vim=/snap/bin/nvim
+alias oldvim=/usr/local/bin/vim
+alias vi=oldvim
 alias python=python3
 alias pip=pip3
 alias connect-ict-vpn=~/dotfiles/connect-ict-vpn.sh
