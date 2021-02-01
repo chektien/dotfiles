@@ -64,9 +64,12 @@ pip install --user git+git://github.com/Lokaltog/powerline --verbose
 # install oh my zsh for easy theming
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# download poewrlevel10k theme
+# download powerlevel10k theme
 # ~/dotfiles/.zshrc should have added ZSH_THEME="powerlevel10k/powerlevel10k"
 git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# download gruvbox theme
+curl -L https://raw.githubusercontent.com/sbugzu/gruvbox-zsh/master/gruvbox.zsh-theme > ~/.oh-my-zsh/custom/themes/gruvbox.zsh-theme
 
 # download zsh plugins
 # ~/dotfiles/.zshrc should have added 
