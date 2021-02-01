@@ -55,10 +55,7 @@ set updatetime=300 " for coc to work better
 set shortmess+=c " coc to work better
 set regexpengine=0 " to fix groovy.vim syntax file error
 
-" python provider for linux
-"let g:python3_host_prog = '/usr/local/bin/python3'
-        
-" python provider for mac
+" python provider
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " make cursor always vertically centre
@@ -223,6 +220,8 @@ let g:vimtex_view_general_viewer = "zathura"
 let g:workspace_autosave_always = 1
 let g:workspace_session_name = 'session.vim'
 let g:workspace_autosave_untrailspaces = 0
+let g:workspace_session_directory = $HOME . '/.vim/sessions/' " save all in one place
+let g:workspace_session_disable_on_args = 1 " only open workspace when vim without args
 " plugin config: workspace }}}
 
 " plugin config: coc-snippets {{{

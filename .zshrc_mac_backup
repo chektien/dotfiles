@@ -143,12 +143,3 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh 
 # enable for powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# Lines configured by zsh-newuser-install
-bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/Users/ch3k/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
