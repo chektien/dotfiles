@@ -44,13 +44,19 @@ sudo apt install clangd-9
 # link up .vimrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/coc-settings.json ~/.vim/coc-settings.json
-
+. ~/.vimrc
+ 
 # link up neovim config
 mkdir -p .config/nvim
 ln -s ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+. ~/.config/nvim/init.vim
 
 # link up .zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
+. ~/.zshrc
+
+# install providers for languages in neovim
+pip install pynvim
 
 # powerline fonts
 pip install --user git+git://github.com/Lokaltog/powerline --verbose

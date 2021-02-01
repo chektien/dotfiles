@@ -32,22 +32,24 @@ export ZSH="/Users/ch3k/.oh-my-zsh"
 alias vim=/usr/local/bin/nvim
 alias oldvim=/usr/bin/vim
 alias vi=oldvim
-alias python=python3
-alias pip=pip3
 alias connect-ict-vpn=$HOME/repos/dotfiles/connect-ict-vpn.sh
 alias fix-zsh-history=$HOME/repos/dotfiles/fix-zsh-history.sh
 alias create-repo=~$HOME/repos/dotfiles/create-repo.sh
 alias ssh-agent-add='eval $(ssh-agent) && ssh-add'
 alias adb='noglob adb' # android logcat commands use `*` which conflicts with zsh "ending in"
 
+# mac homebrew python install
+#alias python=/usr/local/opt/python@3.9/libexec/bin/python
+#alias pip=/usr/local/opt/python@3.9/libexec/bin/pip3 
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-#ZSH_THEME="half-life"
+ZSH_THEME="half-life"
 #ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

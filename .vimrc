@@ -55,8 +55,11 @@ set updatetime=300 " for coc to work better
 set shortmess+=c " coc to work better
 set regexpengine=0 " to fix groovy.vim syntax file error
 
-" python
-let g:python3_host_prog = '/usr/bin/python3'
+" python provider for linux
+"let g:python3_host_prog = '/usr/local/bin/python3'
+        
+" python provider for mac
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " make cursor always vertically centre
 set scrolloff=999
