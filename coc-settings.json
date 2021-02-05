@@ -1,0 +1,11 @@
+{
+ "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "json"
+  ],
+  "clangd.path": "/usr/bin/clangd-9",
+  "prettier.tabWidth": 2
+}

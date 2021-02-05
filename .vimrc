@@ -54,9 +54,10 @@ set number relativenumber "relative line numbers
 set updatetime=300 " for coc to work better
 set shortmess+=c " coc to work better
 set regexpengine=0 " to fix groovy.vim syntax file error
+set diffopt+=vertical " vertical diffsplit by default
 
 " python provider
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " make cursor always vertically centre
 set scrolloff=999
