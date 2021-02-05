@@ -32,6 +32,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'udalov/kotlin-vim'
+    Plug 'hsanson/vim-android'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -123,6 +124,7 @@ inoremap jj <esc>
 
 " neovim terminal
 :tnoremap <Esc> <C-\><C-n>
+:tnoremap <C-w><C-w> <C-\><C-n><C-w>
 
 " coc refactoring
 xmap <leader>f <Plug>(coc-format-selected)
@@ -160,6 +162,13 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " key mappings }}}
+"
+" plugin config: vim-android {{{
+
+let g:gradle_path = '/Users/ch3k/.gradle/wrapper/dists/gradle-6.5-bin/6nifqtx7604sqp1q6g8wikw7p/gradle-6.5'
+let g:android_sdk_path = '/Users/ch3k/Library/Android/sdk'
+
+" plugin config: vim-android }}}
 
 " plugin config: vim-lexical {{{
 
@@ -189,7 +198,16 @@ augroup nerdTreeCD
     autocmd BufEnter * if &buftype !=# 'terminal' | lcd %:p:h | endif 
     "autocmd BufEnter * if (winnr("$")==1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Exit Vim if NERDTree is the only window left.
-    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+    "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+    " always close when exit vim, else session will have issuem
+    autocmd VimLeave * NERDTreeClose
+    "autocmd VimLeave * mksession! [filename]
+
+    " Restore session on starting Vim
+    "autocmd VimEnter * call MySessionRestoreFunction()
+    "autocmd VimEnter * NERDTree
+
 augroup END
 
 " plugin config: nerdtree }}}
@@ -217,11 +235,13 @@ let g:vimtex_view_general_viewer = "zathura"
 " plugin config: vimtex }}}
 
 " plugin config: workspace {{{
+
 let g:workspace_autosave_always = 1
 let g:workspace_session_name = 'session.vim'
 let g:workspace_autosave_untrailspaces = 0
 let g:workspace_session_directory = $HOME . '/.vim/sessions/' " save all in one place
 let g:workspace_session_disable_on_args = 1 " only open workspace when vim without args
+
 " plugin config: workspace }}}
 
 " plugin config: coc-snippets {{{
