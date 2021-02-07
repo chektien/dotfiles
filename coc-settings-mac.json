@@ -7,5 +7,12 @@
     "json"
   ],
   "clangd.path": "/Users/ch3k/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
-  "prettier.tabWidth": 2
+  "prettier.tabWidth": 2,
+
+  "languageserver": {
+    "kotlin": {
+      "command": "/Users/ch3k/repos/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+      "filetypes": ["kotlin"]
+    }
+  }
 }

@@ -1,4 +1,4 @@
-# lang
+#lang
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -13,13 +13,10 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # android
-export ANDROID_SDK_ROOT=/Users/ch3k/Library/Android/sdk
-export PATH=$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+export GRADLE_HOME=/Users/ch3k/.gradle/wrapper/dists/gradle-6.5-bin/6nifqtx7604sqp1q6g8wikw7p/gradle-6.5
+export ANDROID_HOME=/Users/ch3k/Library/Android/sdk
 export NDK_ROOT=/Users/ch3k/Library/Android/sdk/ndk-bundle
-export PATH=$NDK_ROOT:$PATH
-
-# gradle
-export PATH="/Applications/Android Studio.app/Contents/gradle/gradle-2.14.1/bin:$PATH"
+export PATH=$NDK_ROOT:GRADLE_HOME/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # junit
 #export JUNIT_ROOT="/Users/ch3k/junit"
