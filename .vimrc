@@ -118,9 +118,20 @@ map <leader>nn :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 map <leader>nb :NERDTreeFromBookmark<CR>
 nmap <leader>tb :TagbarToggle<CR>
-map <leader>p "_dP
 nnoremap <leader>ws :ToggleWorkspace<CR>
 inoremap jj <esc>
+"map <leader>p "_dP
+
+" copy to system clipboard with leader
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+nnoremap <leader>y "+y
+
+" paste from system clipboard with leader
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " neovim terminal
 :tnoremap <Esc> <C-\><C-n>
