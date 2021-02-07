@@ -55,6 +55,7 @@ set number relativenumber "relative line numbers
 set updatetime=300 " for coc to work better
 set shortmess+=c " coc to work better
 set regexpengine=0 " to fix groovy.vim syntax file error
+set diffopt+=vertical " vertical diffsplit by default
 
 " python provider
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -118,9 +119,20 @@ map <leader>nn :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 map <leader>nb :NERDTreeFromBookmark<CR>
 nmap <leader>tb :TagbarToggle<CR>
-map <leader>p "_dP
 nnoremap <leader>ws :ToggleWorkspace<CR>
 inoremap jj <esc>
+"map <leader>p "_dP
+
+" copy to system clipboard with leader
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+nnoremap <leader>y "+y
+
+" paste from system clipboard with leader
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " neovim terminal
 :tnoremap <Esc> <C-\><C-n>
